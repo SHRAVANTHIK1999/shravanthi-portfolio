@@ -12,56 +12,139 @@ export default function Home() {
     <>
       <Navbar />
 
-      <main className="min-h-screen">
-        <section className="flex min-h-screen items-center justify-center px-6 pt-20">
-          <div className="mx-auto max-w-4xl text-center">
-            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-gray-200 bg-gray-50 px-4 py-2 text-sm text-gray-600">
-              <span className="h-2 w-2 rounded-full bg-green-500"></span>
-              Open to opportunities in Germany
-            </div>
+      <main className="relative overflow-hidden">
+        <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
+          <div className="ambient-grid absolute inset-0 opacity-50" />
+          <div className="ambient-float-one absolute -right-40 -top-40 h-[32rem] w-[32rem] rounded-full bg-cyan-200/25 blur-3xl" />
+          <div className="ambient-float-two absolute -bottom-48 -left-40 h-[30rem] w-[30rem] rounded-full bg-sky-200/20 blur-3xl" />
+        </div>
 
-            <p className="mb-4 text-sm font-medium uppercase tracking-[0.3em] text-gray-500">
-              Applied Computer Science • DevOps • DevSecOps
-            </p>
+        <section className="px-6 pb-8 pt-24 sm:pt-24">
+          <div className="mx-auto max-w-[1320px]">
+            <div className="grid overflow-hidden rounded-[2rem] border border-slate-200 bg-white/75 shadow-sm backdrop-blur-sm lg:grid-cols-[1.15fr_0.85fr]">
 
-            <h1 className="text-5xl font-bold tracking-tight sm:text-6xl md:text-7xl">
-              Hi, I&apos;m Shravanthi.
-            </h1>
+              {/* Hero content */}
+              <div className="p-7 sm:p-8 lg:p-9">
+                <p className="text-base font-semibold uppercase tracking-[0.25em] text-cyan-600">
+                  Software Engineering · DevOps · DevSecOps
+                </p>
 
-            <p className="mx-auto mt-6 max-w-2xl text-lg leading-8 text-gray-600">
-              Master&apos;s student in Applied Computer Science with a background
-              in software development and a growing focus on DevOps,
-              cloud technologies, and DevSecOps.
-            </p>
+                <h1 className="mt-4 max-w-3xl text-5xl font-semibold leading-[0.95] tracking-[-0.055em] text-slate-950 sm:text-6xl lg:text-6xl">
+                  Shravanthi
+                  <br />
+                  Keshavamurthy
+                </h1>
 
-            <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
-              <a
-                href="#projects"
-                className="rounded-full bg-black px-6 py-3 text-sm font-medium text-white transition hover:bg-gray-800"
-              >
-                View My Projects
-              </a>
+                <p className="mt-4 max-w-xl text-xl font-medium leading-7 tracking-tight text-slate-700 sm:text-xl">
+                  I build reliable software and secure delivery pipelines.
+                </p>
 
-              <a
-                href="#contact"
-                className="rounded-full border border-gray-300 px-6 py-3 text-sm font-medium transition hover:bg-gray-100"
-              >
-                Contact Me
-              </a>
+                <p className="mt-3 max-w-xl text-base leading-6 text-slate-700">
+                  Master&apos;s student in Applied Computer Science with 3+
+                  years of enterprise software engineering experience at
+                  Accenture.
+                </p>
+
+                <div className="mt-5 flex flex-wrap gap-2.5">
+                  <a
+                    href="#projects"
+                    className="rounded-full bg-slate-950 px-5 py-2.5 text-base font-semibold text-white transition hover:bg-slate-800"
+                  >
+                    View my work →
+                  </a>
+
+                  <a
+                    href="#contact"
+                    className="rounded-full border border-slate-300 bg-white px-5 py-2.5 text-base font-semibold text-slate-700 transition hover:border-cyan-300 hover:text-cyan-700"
+                  >
+                    Get in touch
+                  </a>
+                </div>
+
+                <div className="mt-6 border-t border-slate-200 pt-4">
+                  <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-cyan-600">
+                    Technologies I work with
+                  </p>
+
+                  <div className="mt-3 flex flex-wrap gap-x-5 gap-y-2 text-base font-medium text-slate-700">
+                    <span>Java</span>
+                    <span>Python</span>
+                    <span>Spring Boot</span>
+                    <span>Docker</span>
+                    <span>Kubernetes</span>
+                    <span>Helm</span>
+                    <span>CI/CD</span>
+                    <span>GitHub Actions</span>
+                    <span>Azure DevOps</span>
+                    <span>Linux</span>
+                    <span>Git</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Portrait + quick facts */}
+              <div className="relative overflow-hidden border-t border-slate-200 bg-gradient-to-br from-cyan-50 via-white to-sky-50 lg:border-l lg:border-t-0">
+                <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-cyan-200/30 blur-3xl" />
+
+                <div className="relative grid h-full items-end gap-3 p-5 sm:p-6">
+                  <div className="relative mx-auto w-full max-w-sm">
+                    <div className="absolute -inset-3 rounded-[2rem] bg-cyan-200/30 blur-2xl" />
+
+                    <div className="relative overflow-hidden rounded-[2rem] border border-white/80 bg-white/60 shadow-lg">
+                      <img
+                        src="/profile.png"
+                        alt="Shravanthi Keshavamurthy"
+                        className="h-[300px] w-full object-cover object-top sm:h-[320px]"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="relative grid gap-2 sm:grid-cols-3 lg:grid-cols-1">
+                    <div className="rounded-xl border border-cyan-100 bg-white/80 p-3">
+                      <p className="text-[12px] font-semibold uppercase tracking-[0.18em] text-cyan-600">
+                        Current Focus
+                      </p>
+                      <p className="mt-1.5 text-sm leading-5 text-slate-700">
+                        DevOps · DevSecOps · Application Security · Cloud ·
+                        Backend
+                      </p>
+                    </div>
+
+                    <div className="rounded-xl border border-cyan-100 bg-white/80 p-3">
+                      <p className="text-[12px] font-semibold uppercase tracking-[0.18em] text-cyan-600">
+                        Experience
+                      </p>
+                      <p className="mt-1 text-base font-semibold text-slate-950">
+                        3+ years
+                      </p>
+                      <p className="text-[12px] text-slate-700">
+                        Enterprise software engineering · Accenture
+                      </p>
+                    </div>
+
+                    <div className="rounded-xl border border-cyan-100 bg-white/80 p-3">
+                      <p className="text-[12px] font-semibold uppercase tracking-[0.18em] text-cyan-600">
+                        Education
+                      </p>
+                      <p className="mt-1 text-sm font-semibold text-slate-900">
+                        M.Sc. Applied Computer Science
+                      </p>
+                      <p className="text-[12px] text-slate-700">
+                        Hochschule Schmalkalden · Germany
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>
 
         <About />
-
         <Skills />
-
         <Projects />
-
         <OtherProjects />
-
         <Experience />
-
         <Education />
         <Contact />
       </main>

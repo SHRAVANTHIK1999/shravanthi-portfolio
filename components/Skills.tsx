@@ -1,113 +1,115 @@
 const skillGroups = [
   {
-    title: "DevOps & CI/CD",
+    icon: "</>",
+    title: "Development",
+    skills: [
+      "Java",
+      "Python",
+      "JavaScript",
+      "C++",
+      "SQL",
+      "HTML",
+      "CSS",
+      "REST APIs",
+      "Spring Boot",
+    ],
+  },
+  {
+    icon: "☁",
+    title: "DevOps & Cloud",
     skills: [
       "Docker",
       "Kubernetes",
       "Helm",
+      "Jenkins",
       "GitHub Actions",
       "Azure DevOps",
-      "Jenkins",
-      "Git",
+      "AWS",
+      "Azure",
+      "GCP",
       "CI/CD",
-      "Build Automation",
+      "Linux",
     ],
   },
   {
-    title: "DevSecOps & Security",
+    icon: "◇",
+    title: "Security",
     skills: [
       "SAST",
       "DAST",
       "SCA",
       "SonarQube",
+      "OWASP",
       "Trivy",
-      "OWASP Dependency-Check",
-      "Vulnerability Management",
-      "Security Scanning",
-    ],
-  },
-  {
-    title: "Cloud & Infrastructure",
-    skills: [
-      "AWS",
-      "Microsoft Azure",
-      "Google Cloud",
-      "Linux",
-      "Shell Scripting",
-      "Minikube",
-    ],
-  },
-  {
-    title: "Monitoring & Operations",
-    skills: [
-      "Prometheus",
-      "Grafana",
+      "Application Security",
+      "DevSecOps",
       "Incident Response",
-      "Log Analysis",
-      "ServiceNow",
-      "SLA Tracking",
     ],
   },
   {
-    title: "Backend Development",
-    skills: [
-      "Java",
-      "Spring Boot",
-      "REST APIs",
-      "Python",
-      "JavaScript",
-    ],
-  },
-  {
-    title: "Databases & Collaboration",
+    icon: "▤",
+    title: "Databases & Tools",
     skills: [
       "MySQL",
+      "PostgreSQL",
       "Oracle SQL",
+      "MongoDB",
+      "Prometheus",
+      "Grafana",
+      "Minikube",
+      "ServiceNow",
       "Jira",
       "Confluence",
-      "Agile / Scrum",
     ],
   },
 ]
 
 export default function Skills() {
   return (
-    <section id="skills" className="border-t border-gray-100 px-6 py-24">
-      <div className="mx-auto max-w-6xl">
-        <div className="max-w-3xl">
-          <p className="text-sm font-medium uppercase tracking-[0.25em] text-gray-500">
-            Skills
-          </p>
+    <section
+      id="skills"
+      className="border-t border-slate-200/80 px-6 py-12 sm:py-14"
+    >
+      <div className="mx-auto max-w-[1320px]">
+        <div className="flex items-end justify-between gap-6">
+          <div>
+            <p className="text-[12px] font-bold uppercase tracking-[0.25em] text-cyan-600">
+              My Skills
+            </p>
 
-          <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">
-            Tools and technologies.
-          </h2>
-
-          <p className="mt-5 text-lg leading-8 text-gray-600">
-            A practical engineering toolkit built through enterprise
-            experience and hands-on DevSecOps projects.
-          </p>
+            <h2 className="mt-2 text-3xl font-semibold tracking-[-0.04em] text-slate-950 sm:text-4xl">
+              Tools, technologies &amp; practices.
+            </h2>
+          </div>
         </div>
 
-        <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-7 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
           {skillGroups.map((group) => (
-            <div
+            <article
               key={group.title}
-              className="rounded-2xl border border-gray-200 p-6 transition hover:-translate-y-1 hover:shadow-lg"
+              className="rounded-2xl border border-slate-200 bg-white/80 p-4 transition duration-300 hover:-translate-y-0.5 hover:border-cyan-200 hover:shadow-sm"
             >
-              <h3 className="text-lg font-semibold">{group.title}</h3>
+              <div className="flex items-center gap-3">
+                <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-cyan-50 text-base font-bold text-cyan-600 ring-1 ring-cyan-100">
+                  {group.icon}
+                </div>
 
-              <div className="mt-5 flex flex-wrap gap-2">
+                <h3 className="text-base font-semibold text-slate-950">
+                  {group.title}
+                </h3>
+              </div>
+
+              <div className="mt-4 flex flex-wrap gap-1.5">
                 {group.skills.map((skill) => (
                   <span
                     key={skill}
-                    className="rounded-full bg-gray-100 px-3 py-1.5 text-sm text-gray-700"
+                    className="rounded-md bg-slate-50 px-2 py-1 text-[12px] font-medium text-slate-700 ring-1 ring-slate-100"
                   >
                     {skill}
                   </span>
                 ))}
               </div>
-            </div>
+            </article>
           ))}
         </div>
       </div>
