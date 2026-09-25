@@ -1,4 +1,9 @@
+"use client"
+
+import { useState } from "react"
 import Navbar from "@/components/Navbar"
+import type { Language } from "@/lib/translations"
+import { getTranslations } from "@/lib/translations"
 import About from "@/components/About"
 import Skills from "@/components/Skills"
 import Projects from "@/components/Projects"
@@ -8,9 +13,12 @@ import Education from "@/components/Education"
 import Contact from "@/components/Contact"
 
 export default function Home() {
+  const [language, setLanguage] = useState<Language>("EN")
+  const t = getTranslations(language)
+
   return (
     <>
-      <Navbar />
+      <Navbar language={language} setLanguage={setLanguage} />
 
       <main className="relative overflow-hidden">
         <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
@@ -22,11 +30,10 @@ export default function Home() {
         <section className="px-6 pb-8 pt-24 sm:pt-24">
           <div className="mx-auto max-w-[1320px]">
             <div className="grid overflow-hidden rounded-[2rem] border border-slate-200 bg-white/75 shadow-sm backdrop-blur-sm lg:grid-cols-[1.15fr_0.85fr]">
-
               {/* Hero content */}
               <div className="p-7 sm:p-8 lg:p-9">
                 <p className="text-base font-semibold uppercase tracking-[0.25em] text-cyan-600">
-                  Software Engineering · DevOps · DevSecOps
+                  {t.hero.eyebrow}
                 </p>
 
                 <h1 className="mt-4 max-w-3xl text-5xl font-semibold leading-[0.95] tracking-[-0.055em] text-slate-950 sm:text-6xl lg:text-6xl">
@@ -36,13 +43,11 @@ export default function Home() {
                 </h1>
 
                 <p className="mt-4 max-w-xl text-xl font-medium leading-7 tracking-tight text-slate-700 sm:text-xl">
-                  I build reliable software and secure delivery pipelines.
+                  {t.hero.tagline}
                 </p>
 
                 <p className="mt-3 max-w-xl text-base leading-6 text-slate-700">
-                  Master&apos;s student in Applied Computer Science with 3+
-                  years of enterprise software engineering experience at
-                  Accenture.
+                  {t.hero.intro}
                 </p>
 
                 <div className="mt-5 flex flex-wrap gap-2.5">
@@ -50,20 +55,20 @@ export default function Home() {
                     href="#projects"
                     className="rounded-full bg-slate-950 px-5 py-2.5 text-base font-semibold text-white transition hover:bg-slate-800"
                   >
-                    View my work →
+                    {t.hero.work}
                   </a>
 
                   <a
                     href="#contact"
                     className="rounded-full border border-slate-300 bg-white px-5 py-2.5 text-base font-semibold text-slate-700 transition hover:border-cyan-300 hover:text-cyan-700"
                   >
-                    Get in touch
+                    {t.hero.contact}
                   </a>
                 </div>
 
                 <div className="mt-6 border-t border-slate-200 pt-4">
                   <p className="text-[12px] font-semibold uppercase tracking-[0.2em] text-cyan-600">
-                    Technologies I work with
+                    {t.hero.technologies}
                   </p>
 
                   <div className="mt-3 flex flex-wrap gap-x-5 gap-y-2 text-base font-medium text-slate-700">
@@ -102,35 +107,39 @@ export default function Home() {
                   <div className="relative grid gap-2 sm:grid-cols-3 lg:grid-cols-1">
                     <div className="rounded-xl border border-cyan-100 bg-white/80 p-3">
                       <p className="text-[12px] font-semibold uppercase tracking-[0.18em] text-cyan-600">
-                        Current Focus
+                        {t.hero.focus}
                       </p>
+
                       <p className="mt-1.5 text-sm leading-5 text-slate-700">
-                        DevOps · DevSecOps · Application Security · Cloud ·
-                        Backend
+                        {t.hero.focusText}
                       </p>
                     </div>
 
                     <div className="rounded-xl border border-cyan-100 bg-white/80 p-3">
                       <p className="text-[12px] font-semibold uppercase tracking-[0.18em] text-cyan-600">
-                        Experience
+                        {t.hero.experience}
                       </p>
+
                       <p className="mt-1 text-base font-semibold text-slate-950">
-                        3+ years
+                        {t.hero.experienceValue}
                       </p>
+
                       <p className="text-[12px] text-slate-700">
-                        Enterprise software engineering · Accenture
+                        {t.hero.experienceText}
                       </p>
                     </div>
 
                     <div className="rounded-xl border border-cyan-100 bg-white/80 p-3">
                       <p className="text-[12px] font-semibold uppercase tracking-[0.18em] text-cyan-600">
-                        Education
+                        {t.hero.education}
                       </p>
+
                       <p className="mt-1 text-sm font-semibold text-slate-900">
-                        M.Sc. Applied Computer Science
+                        {t.hero.educationValue}
                       </p>
+
                       <p className="text-[12px] text-slate-700">
-                        Hochschule Schmalkalden · Germany
+                        {t.hero.educationText}
                       </p>
                     </div>
                   </div>
@@ -140,13 +149,13 @@ export default function Home() {
           </div>
         </section>
 
-        <About />
-        <Skills />
-        <Projects />
-        <OtherProjects />
-        <Experience />
-        <Education />
-        <Contact />
+        <About language={language} />
+        <Skills language={language} />
+        <Projects language={language} />
+        <OtherProjects language={language} />
+        <Experience language={language} />
+        <Education language={language} />
+        <Contact language={language} />
       </main>
     </>
   )

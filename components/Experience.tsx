@@ -1,37 +1,15 @@
-const experiences = [
-  {
-    role: "Application Development Analyst – DevSecOps & Java Backend",
-    company: "Accenture",
-    location: "Bangalore, India",
-    period: "Dec 2023 – Sep 2024",
-    points: [
-      "Contributed to enterprise DevSecOps workflows by integrating and maintaining SAST, DAST and SCA security checks within CI/CD pipelines, enabling automated security validation during software delivery.",
-      "Worked on CI/CD build and deployment workflows, supporting automated builds, testing, release activities and rollback-capable deployments across Linux-based environments.",
-      "Worked with Docker-based containerization and deployment workflows to improve consistency and portability across application environments.",
-      "Contributed to Java and Spring Boot backend services, RESTful APIs and database operations involving MySQL and Oracle SQL.",
-      "Performed production troubleshooting through log analysis, incident investigation and root-cause analysis, with incidents and SLA tracking managed through ServiceNow.",
-      "Used Git-based development practices including feature branches, pull requests and code reviews to maintain controlled and traceable changes.",
-      "Collaborated within Agile/Scrum delivery processes using Jira for work tracking and Confluence for technical documentation and knowledge sharing.",
-    ],
-  },
-  {
-    role: "Application Development Associate – Backend & Deployment",
-    company: "Accenture",
-    location: "Bangalore, India",
-    period: "Oct 2021 – Nov 2023",
-    points: [
-      "Contributed to backend development and deployment of enterprise applications using Java, Spring Boot, RESTful services, MySQL and Oracle SQL.",
-      "Supported CI/CD deployment pipelines through build automation, release preparation and deployment activities across Linux environments.",
-      "Worked with Git-based development workflows including feature branches, pull requests, code reviews and change tracking.",
-      "Performed application troubleshooting and log analysis to investigate deployment and production issues and support timely resolution.",
-      "Worked with ServiceNow for incident management, service requests and SLA tracking within enterprise support processes.",
-      "Used Jira to track development and operational tasks and Confluence to maintain technical documentation and project knowledge.",
-      "Collaborated with cross-functional Agile/Scrum teams to coordinate development, deployment, issue resolution and technical documentation.",
-    ],
-  },
-]
+"use client"
 
-export default function Experience() {
+import type { Language } from "@/lib/translations"
+import { getTranslations } from "@/lib/translations"
+
+type ExperienceProps = {
+  language: Language
+}
+
+export default function Experience({ language }: ExperienceProps) {
+  const t = getTranslations(language)
+
   return (
     <section
       id="experience"
@@ -40,17 +18,19 @@ export default function Experience() {
       <div className="mx-auto max-w-[1320px]">
         <div className="max-w-3xl">
           <p className="text-xs font-bold uppercase tracking-[0.25em] text-cyan-600">
-            Experience
+            {t.experience.eyebrow}
           </p>
 
           <h2 className="mt-2 text-4xl font-bold leading-tight tracking-tight text-slate-950 sm:text-4xl">
-            Professional experience.
+            {language === "EN"
+              ? "Professional experience."
+              : "Berufserfahrung."}
           </h2>
 
           <p className="mt-3 text-base leading-6 text-slate-700">
-            Three years of enterprise software engineering experience at
-            Accenture, spanning backend development, CI/CD, DevSecOps,
-            deployment support and production operations.
+            {language === "EN"
+              ? "Three years of enterprise software engineering experience at Accenture, spanning backend development, CI/CD, DevSecOps, deployment support and production operations."
+              : "Drei Jahre Erfahrung in der Enterprise-Softwareentwicklung bei Accenture mit Fokus auf Backend-Entwicklung, CI/CD, DevSecOps, Deployment und Produktionsbetrieb."}
           </p>
         </div>
 
@@ -58,9 +38,9 @@ export default function Experience() {
           <div className="absolute bottom-8 left-[15px] top-8 hidden w-px bg-slate-200 md:block" />
 
           <div className="space-y-5">
-            {experiences.map((experience, index) => (
+            {t.experience.roles.map((experience, index) => (
               <article
-                key={`${experience.role}-${experience.period}`}
+                key={`${experience.title}-${experience.period}`}
                 className="relative md:pl-12"
               >
                 <div className="absolute left-0 top-8 hidden h-8 w-8 items-center justify-center rounded-full border-4 border-slate-50 bg-cyan-500 text-[12px] font-bold text-white shadow-sm md:flex">
@@ -71,11 +51,11 @@ export default function Experience() {
                   <div className="flex flex-col gap-4 border-b border-slate-100 pb-4 md:flex-row md:items-start md:justify-between">
                     <div>
                       <p className="text-xs font-bold uppercase tracking-wider text-cyan-600">
-                        Accenture
+                        {experience.company}
                       </p>
 
                       <h3 className="mt-2 text-lg font-bold leading-tight tracking-tight text-slate-950 sm:text-xl">
-                        {experience.role}
+                        {experience.title}
                       </h3>
 
                       <p className="mt-1 text-sm font-medium text-slate-700">

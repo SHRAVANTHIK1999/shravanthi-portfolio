@@ -1,7 +1,10 @@
+import type { Language } from "@/lib/translations"
+import { getTranslations } from "@/lib/translations"
+
 const skillGroups = [
   {
     icon: "</>",
-    title: "Development",
+    key: "development",
     skills: [
       "Java",
       "Python",
@@ -16,7 +19,7 @@ const skillGroups = [
   },
   {
     icon: "☁",
-    title: "DevOps & Cloud",
+    key: "devops",
     skills: [
       "Docker",
       "Kubernetes",
@@ -33,7 +36,7 @@ const skillGroups = [
   },
   {
     icon: "◇",
-    title: "Security",
+    key: "security",
     skills: [
       "SAST",
       "DAST",
@@ -48,7 +51,7 @@ const skillGroups = [
   },
   {
     icon: "▤",
-    title: "Databases & Tools",
+    key: "databases",
     skills: [
       "MySQL",
       "PostgreSQL",
@@ -62,9 +65,22 @@ const skillGroups = [
       "Confluence",
     ],
   },
-]
+] as const
 
-export default function Skills() {
+type SkillsProps = {
+  language: Language
+}
+
+export default function Skills({ language }: SkillsProps) {
+  const t = getTranslations(language)
+
+  const groupTitles = {
+    development: t.skills.groups.development,
+    devops: t.skills.groups.devops,
+    security: t.skills.groups.security,
+    databases: t.skills.groups.databases,
+  }
+
   return (
     <section
       id="skills"
@@ -74,11 +90,13 @@ export default function Skills() {
         <div className="flex items-end justify-between gap-6">
           <div>
             <p className="text-[12px] font-bold uppercase tracking-[0.25em] text-cyan-600">
-              My Skills
+              {t.skills.eyebrow}
             </p>
 
             <h2 className="mt-2 text-3xl font-semibold tracking-[-0.04em] text-slate-950 sm:text-4xl">
-              Tools, technologies &amp; practices.
+              {language === "EN"
+                ? "Tools, technologies & practices."
+                : "Tools, Technologien & Methoden."}
             </h2>
           </div>
         </div>
@@ -86,7 +104,7 @@ export default function Skills() {
         <div className="mt-7 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
           {skillGroups.map((group) => (
             <article
-              key={group.title}
+              key={group.key}
               className="rounded-2xl border border-slate-200 bg-white/80 p-4 transition duration-300 hover:-translate-y-0.5 hover:border-cyan-200 hover:shadow-sm"
             >
               <div className="flex items-center gap-3">
@@ -95,7 +113,7 @@ export default function Skills() {
                 </div>
 
                 <h3 className="text-base font-semibold text-slate-950">
-                  {group.title}
+                  {groupTitles[group.key]}
                 </h3>
               </div>
 

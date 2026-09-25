@@ -1,17 +1,25 @@
 "use client"
 
 import { useState } from "react"
+import type { Language } from "@/lib/translations"
+import { getTranslations } from "@/lib/translations"
 
-const links = [
-  { label: "About", href: "#about" },
-  { label: "Skills", href: "#skills" },
-  { label: "Projects", href: "#projects" },
-  { label: "Experience", href: "#experience" },
-  { label: "Education", href: "#education" },
-]
+type NavbarProps = {
+  language: Language
+  setLanguage: (language: Language) => void
+}
 
-export default function Navbar() {
+export default function Navbar({ language, setLanguage }: NavbarProps) {
   const [menuOpen, setMenuOpen] = useState(false)
+  const t = getTranslations(language)
+
+  const links = [
+    { label: t.nav.about, href: "#about" },
+    { label: t.nav.skills, href: "#skills" },
+    { label: t.nav.projects, href: "#projects" },
+    { label: t.nav.experience, href: "#experience" },
+    { label: t.nav.education, href: "#education" },
+  ]
 
   return (
     <nav className="fixed top-0 z-50 w-full border-b border-slate-200/80 bg-[#f7f7f5]/90 backdrop-blur-md">
@@ -41,8 +49,34 @@ export default function Navbar() {
               href="#contact"
               className="rounded-full border border-slate-300 px-4 py-2 text-slate-700 transition hover:border-slate-950 hover:bg-slate-950 hover:text-white"
             >
-              Contact
+              {t.nav.contact}
             </a>
+
+            <div className="ml-1 flex items-center rounded-full border border-slate-300 p-1 text-sm font-semibold">
+              <button
+                type="button"
+                onClick={() => setLanguage("EN")}
+                className={`rounded-full px-2.5 py-1 transition ${
+                  language === "EN"
+                    ? "bg-slate-950 text-white"
+                    : "text-slate-500 hover:text-slate-950"
+                }`}
+              >
+                EN
+              </button>
+
+              <button
+                type="button"
+                onClick={() => setLanguage("DE")}
+                className={`rounded-full px-2.5 py-1 transition ${
+                  language === "DE"
+                    ? "bg-cyan-500 text-slate-950"
+                    : "text-slate-500 hover:text-slate-950"
+                }`}
+              >
+                DE
+              </button>
+            </div>
           </div>
 
           {/* Mobile menu button */}
@@ -79,8 +113,40 @@ export default function Navbar() {
                 onClick={() => setMenuOpen(false)}
                 className="mt-3 inline-flex w-fit rounded-full border border-slate-300 px-4 py-2 text-base font-medium text-slate-700 transition hover:border-slate-950 hover:bg-slate-950 hover:text-white"
               >
-                Contact
+                {t.nav.contact}
               </a>
+
+              <div className="mt-4 flex w-fit items-center rounded-full border border-slate-300 p-1 text-sm font-semibold">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setLanguage("EN")
+                    setMenuOpen(false)
+                  }}
+                  className={`rounded-full px-3 py-1.5 transition ${
+                    language === "EN"
+                      ? "bg-slate-950 text-white"
+                      : "text-slate-500 hover:text-slate-950"
+                  }`}
+                >
+                  EN
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => {
+                    setLanguage("DE")
+                    setMenuOpen(false)
+                  }}
+                  className={`rounded-full px-3 py-1.5 transition ${
+                    language === "DE"
+                      ? "bg-cyan-500 text-slate-950"
+                      : "text-slate-500 hover:text-slate-950"
+                  }`}
+                >
+                  DE
+                </button>
+              </div>
             </div>
           </div>
         )}
